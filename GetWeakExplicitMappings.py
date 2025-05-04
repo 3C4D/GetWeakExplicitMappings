@@ -24,7 +24,7 @@ conn.bind()
 
 # Query all the altSecurityIdentities
 conn.search(
-        search_base="DC=administrator,DC=htb",
+        search_base=",".join(["DC="+i for i in args.domain.split('.')]),
         search_filter="(samaccountname=*)",
         attributes=["altSecurityIdentities","distinguishedName"]
 )
